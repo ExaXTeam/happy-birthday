@@ -113,7 +113,7 @@
 
         .heart {
             position: fixed;
-            font-size: 1.5rem;
+            font-size: 2.5rem; /* Perbesar ukuran emoji */
             animation: float 3s ease-in-out infinite;
         }
 
@@ -142,31 +142,6 @@
             transform: translateY(0);
         }
 
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .gallery img {
-            width: 100%;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        .love-quote {
-            font-style: italic;
-            color: #FF69B4;
-            font-size: 1.2rem;
-            margin: 1rem 0;
-            text-align: center;
-        }
-
         .whatsapp-btn {
             background: #25D366;
             color: white;
@@ -176,17 +151,6 @@
             display: inline-block;
             margin-top: 2rem;
             animation: pulse 2s infinite;
-        }
-
-        .story-emoji {
-            font-size: 2rem;
-            margin: 0.5rem 0;
-            display: inline-block;
-        }
-
-        .highlight {
-            color: var(--text-color);
-            font-weight: bold;
         }
 
         @keyframes pulse {
@@ -246,12 +210,6 @@
                 <p class="love-quote">"I love you more than yesterday, but less than tomorrow."</p>
             </div>
 
-            <div class="gallery animate__animated animate__fadeIn">
-                <img src="/api/placeholder/300/300" alt="Memory 1" loading="lazy">
-                <img src="/api/placeholder/300/300" alt="Memory 2" loading="lazy">
-                <img src="/api/placeholder/300/300" alt="Memory 3" loading="lazy">
-            </div>
-
             <div class="message animate__animated animate__fadeIn">
                 <h2 style="color: var(--text-color)">Wishes for You 💝</h2>
                 <p style="margin-top: 1rem">Di ulang tahunmu yang ke-14 ini, aku berharap kamu selalu bahagia, sehat, dan sukses dalam semua impianmu. I'll always be here for you, supporting you in every step you take.</p>
@@ -261,7 +219,7 @@
                 </div>
             </div>
 
-<div class="message animate__animated animate__fadeIn">
+            <div class="message animate__animated animate__fadeIn">
                 <p class="love-quote">"You're not just my girlfriend, you're my everything."</p>
                 <p style="margin-top: 1rem">Thank you for being the most amazing girlfriend. You make my life complete.</p>
             </div>
