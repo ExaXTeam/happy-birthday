@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Syiva! 🎂</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #FFB6C1;
+            --secondary-color: #FFC0CB;
+            --text-color: #FF69B4;
+            --bg-color: #FFF0F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .story-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: left;
+        }
+
+        .story-page {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s;
+        }
+
+        .love-quote {
+            font-style: italic;
+            color: #FF69B4;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .love-message {
+            font-size: 1.2rem;
+            color: #FF1493;
+            margin: 1rem 0;
+            padding: 1rem;
+            border-radius: 15px;
+            background: rgba(255, 182, 193, 0.1);
+        }
+
+        .story-page.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .start-btn {
+            background: var(--primary-color);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 2rem 0;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .start-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .next-btn {
+            background: var(--text-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .next-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .heart {
+            position: fixed;
+            font-size: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .celebration-content {
+            display: none;
+        }
+
+        .message {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 1rem 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .love-quote {
+            font-style: italic;
+            color: #FF69B4;
+            font-size: 1.2rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 2rem;
+            animation: pulse 2s infinite;
+        }
+
+        .story-emoji {
+            font-size: 2rem;
+            margin: 0.5rem 0;
+            display: inline-block;
+        }
+
+        .highlight {
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="start-btn" onclick="startStory()">Mulai Cerita ✨</button>
+        
+        <div id="story" class="story-container hidden">
+            <div class="story-page" id="page1">
+                <span class="story-emoji">🌟</span>
+                <p>Di suatu hari yang indah, tepatnya tanggal 21 Februari 2011, dunia dianugerahi dengan hadirnya seorang malaikat kecil yang kini menjadi cinta dalam hidupku.</p>
+                <button class="next-btn" onclick="showNextPage(2)">Lanjutkan...</button>
+            </div>
+
+            <div class="story-page" id="page2">
+                <span class="story-emoji">👶</span>
+                <p>Malaikat kecil ini diberi nama <span class="highlight">Assyiva</span>. Nama yang seindah pemiliknya, yang kini telah mencuri hatiku. </p>
+                <button class="next-btn" onclick="showNextPage(3)">Lanjutkan...</button>
+            </div>
+
+            <div class="story-page" id="page3">
+                <span class="story-emoji">🎀</span>
+                <p>Yang lebih dikenal dengan panggilan <span class="highlight">Syiva</span>. Kekasih hatiku yang selalu membuatku tersenyum. Setiap tawamu adalah musik terindah dalam hidupku.</p>
+                <div class="love-quote">"Every love story is beautiful, but ours is my favorite."</div>
+                <button class="next-btn" onclick="showNextPage(4)">Lanjutkan...</button>
+            </div>
+
+            <div class="story-page" id="page4">
+                <span class="story-emoji">🌸</span>
+                <p>Syiva, kamu adalah hadiah terindah yang pernah Tuhan berikan untukku. Setiap detik bersamamu adalah momen yang tak terlupakan.</p>
+                <button class="next-btn" onclick="showNextPage(5)">Lanjutkan...</button>
+            </div>
+
+            <div class="story-page" id="page5">
+                <span class="story-emoji">🎈</span>
+                <p>Dan hari ini, di ulang tahunmu yang ke-14, aku ingin menjadi orang pertama yang mengucapkan selamat dan memberikan seluruh cintaku untukmu, my dear Syiva.</p>
+                <button class="next-btn" onclick="startCelebration()">Mulai Kejutan! 🎉</button>
+            </div>
+        </div>
+
+        <div id="celebration" class="celebration-content">
+            <div class="cake">🎂</div>
+            <div class="message animate__animated animate__fadeIn">
+                <h1 style="color: var(--text-color)">Happy 14th Birthday My Love 💝</h1>
+                <p style="margin-top: 1rem">To the most beautiful girl in my world...</p>
+            </div>
+
+            <div class="message animate__animated animate__fadeIn">
+                <h2 style="color: var(--text-color)">My Dearest Syiva... 💖</h2>
+                <p style="margin-top: 1rem">Setiap hari bersamamu adalah anugerah. Senyummu adalah matahariku, tawamu adalah kebahagiaanku, dan cintamu adalah kekuatanku.</p>
+                <p class="love-quote">"I love you more than yesterday, but less than tomorrow."</p>
+            </div>
+
+            <div class="gallery animate__animated animate__fadeIn">
+                <img src="/api/placeholder/300/300" alt="Memory 1" loading="lazy">
+                <img src="/api/placeholder/300/300" alt="Memory 2" loading="lazy">
+                <img src="/api/placeholder/300/300" alt="Memory 3" loading="lazy">
+            </div>
+
+            <div class="message animate__animated animate__fadeIn">
+                <h2 style="color: var(--text-color)">Wishes for You 💝</h2>
+                <p style="margin-top: 1rem">Di ulang tahunmu yang ke-14 ini, aku berharap kamu selalu bahagia, sehat, dan sukses dalam semua impianmu. I'll always be here for you, supporting you in every step you take.</p>
+                <div class="love-message">
+                    I love you more than words can say, Syiva!<br>
+                    You mean everything to me ❤️
+                </div>
+            </div>
+
+<div class="message animate__animated animate__fadeIn">
+                <p class="love-quote">"You're not just my girlfriend, you're my everything."</p>
+                <p style="margin-top: 1rem">Thank you for being the most amazing girlfriend. You make my life complete.</p>
+            </div>
+
+            <a href="https://wa.me/6285640429082?text=Terima%20kasih%20untuk%20kejutannya%20❤️" class="whatsapp-btn">
+                Balas Pesan ✨
+            </a>
+        </div>
+    </div>
+
+    <script>
+        function startStory() {
+            document.querySelector('.start-btn').classList.add('hidden');
+            document.getElementById('story').classList.remove('hidden');
+            showNextPage(1);
+        }
+
+        function showNextPage(pageNumber) {
+            const currentPage = document.getElementById(`page${pageNumber}`);
+            currentPage.classList.add('show');
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        function playBirthdaySong() {
+            const audio = new Audio('https://example.com/birthday-song.mp3');
+            audio.play();
+        }
+
+        function startCelebration() {
+            document.getElementById('story').classList.add('hidden');
+            document.getElementById('celebration').style.display = 'block';
+            
+            // Start creating hearts
+            setInterval(createHeart, 300);
+
+            // Play birthday song
+            playBirthdaySong();
+
+            // Animate messages sequentially
+            const messages = document.querySelectorAll('.message');
+            messages.forEach((message, index) => {
+                setTimeout(() => {
+                    message.classList.add('show');
+                }, index * 1000);
+            });
+        }
+
+        // Preload images
+        window.addEventListener('load', () => {
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                const src = img.getAttribute('src');
+                if (src) {
+                    const preloadImg = new Image();
+                    preloadImg.src = src;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
