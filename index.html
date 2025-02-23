@@ -3,292 +3,406 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Syiva! 🎂</title>
+    <title>✨ Special Birthday Surprise ✨</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #FFB6C1;
-            --secondary-color: #FFC0CB;
-            --text-color: #FF69B4;
-            --bg-color: #FFF0F5;
+            --primary-color: #ffb6c1;
+            --secondary-color: #ffd1dc;
+            --text-color: #4a4a4a;
+            --accent-color: #ff69b4;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: var(--bg-color);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: var(--text-color);
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             overflow-x: hidden;
         }
 
-        .container {
+        #landing-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: transform 1s ease-in-out;
+        }
+
+        #landing-page.hide {
+            transform: translateY(-100%);
+        }
+
+        .landing-content {
             text-align: center;
-            padding: 2rem;
-            max-width: 800px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .story-container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 2rem;
-            text-align: left;
-        }
-
-        .story-page {
-            background: white;
-            padding: 2rem;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 20px;
-            margin: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
 
-        .love-quote {
-            font-style: italic;
-            color: #FF69B4;
-            font-size: 1.2rem;
-            margin: 1rem 0;
+        .landing-title {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
             text-align: center;
         }
 
-        .love-message {
-            font-size: 1.2rem;
-            color: #FF1493;
-            margin: 1rem 0;
-            padding: 1rem;
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 20px auto;
+            animation: bounce 2s infinite;
+        }
+
+        .logo i {
+            font-size: 4em;
+            color: var(--accent-color);
+        }
+
+        .title {
+            font-size: 3.5em;
+            margin: 20px 0;
+            color: var(--accent-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeInDown 1s;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin: 20px auto;
+            max-width: 800px;
+            animation: fadeIn 1s;
+        }
+
+        .message {
+            font-size: 1.3em;
+            line-height: 1.8;
+            margin: 30px 0;
+        }
+
+        .quote {
+            font-style: italic;
+            color: var(--accent-color);
+            font-size: 1.2em;
+            margin: 20px 0;
+            padding: 20px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(255,255,255,0.5);
+        }
+
+        .wishes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 20px;
             border-radius: 15px;
-            background: rgba(255, 182, 193, 0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        .story-page.show {
-            opacity: 1;
-            transform: translateY(0);
+        .wish-card i {
+            font-size: 2em;
+            color: var(--accent-color);
+            margin-bottom: 10px;
         }
 
-        .start-btn {
-            background: var(--primary-color);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin: 2rem 0;
-            transition: transform 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .start-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .next-btn {
-            background: var(--text-color);
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--accent-color);
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
+            border-radius: 50px;
+            font-size: 1.1em;
             cursor: pointer;
-            margin-top: 1rem;
-            transition: transform 0.3s;
+            transition: transform 0.3s, background 0.3s;
+            margin: 10px;
+            text-decoration: none;
         }
 
-        .next-btn:hover {
+        .button:hover {
             transform: scale(1.05);
+            background: #ff1493;
         }
 
-        .heart {
+        .floating-icons {
             position: fixed;
-            font-size: 4rem; /* Memperbesar ukuran emoji lebih besar */
-            animation: float 3s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        @keyframes float {
+        .floating-icon {
+            position: absolute;
+            font-size: 20px;
+            color: var(--accent-color);
+            animation: floatUp 4s linear infinite;
+        }
+
+        #scrollTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
         }
 
-        .celebration-content {
-            display: none;
-        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .landing-title {
+                font-size: 2em;
+            }
 
-        .message {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            margin: 1rem 0;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.5s;
-        }
+            .title {
+                font-size: 2.5em;
+            }
 
-        .message.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
+            .card {
+                padding: 20px;
+                margin: 10px;
+            }
 
-        .whatsapp-btn {
-            background: #25D366;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 2rem;
-            animation: pulse 2s infinite;
-        }
+            .message {
+                font-size: 1.1em;
+            }
 
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            .button {
+                padding: 12px 24px;
+                font-size: 1em;
+            }
+
+            .wishes {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Landing Page -->
+    <div id="landing-page">
+        <div class="landing-content animate__animated animate__fadeIn">
+            <h1 class="landing-title">Ada Kejutan Spesial Untukmu! 🎁</h1>
+            <p style="margin-bottom: 20px;">Klik tombol di bawah untuk membuka kejutannya</p>
+            <button class="button" onclick="startSurprise()">
+                <i class="fas fa-gift"></i> Buka Kejutan
+            </button>
+        </div>
+    </div>
+
+    <div class="floating-icons"></div>
+    
     <div class="container">
-        <button class="start-btn" onclick="startStory()">Untuk Dirimu, Syiva ❤️</button>
-        
-        <div id="story" class="story-container hidden">
-            <div class="story-page" id="page1">
-                <span class="story-emoji">🌟</span>
-                <p>Di suatu hari yang indah, tepatnya tanggal 21 Februari 2011, dunia dianugerahi dengan hadirnya seorang malaikat kecil yang kini menjadi cinta dalam hidupku.</p>
-                <button class="next-btn" onclick="showNextPage(2)">Lanjutkan...</button>
+        <div class="header animate__animated animate__fadeIn">
+            <div class="logo">
+                <i class="fas fa-birthday-cake"></i>
             </div>
-
-            <div class="story-page" id="page2">
-                <span class="story-emoji">👼</span>
-                <p>Malaikat kecil ini diberi nama <span class="highlight">Assyiva</span>. Nama yang seindah pemiliknya, yang kini telah mencuri hatiku. </p>
-                <button class="next-btn" onclick="showNextPage(3)">Lanjutkan...</button>
-            </div>
-
-            <div class="story-page" id="page3">
-                <span class="story-emoji">💝</span>
-                <p>Yang lebih dikenal dengan panggilan <span class="highlight">Syiva</span>. Kekasih hatiku yang selalu membuatku tersenyum. Setiap tawamu adalah musik terindah dalam hidupku.</p>
-                <div class="love-quote">"Every love story is beautiful, but ours is my favorite."</div>
-                <button class="next-btn" onclick="showNextPage(4)">Lanjutkan...</button>
-            </div>
-
-            <div class="story-page" id="page4">
-                <span class="story-emoji">🌹</span>
-                <p>Syiva, kamu adalah hadiah terindah yang pernah Tuhan berikan untukku. Setiap detik bersamamu adalah momen yang tak terlupakan.</p>
-                <button class="next-btn" onclick="showNextPage(5)">Lanjutkan...</button>
-            </div>
-
-            <div class="story-page" id="page5">
-                <span class="story-emoji">✨</span>
-                <p>Dan hari ini, di ulang tahunmu yang ke-14, aku ingin menjadi orang pertama yang mengucapkan selamat dan memberikan seluruh cintaku untukmu, my dear Syiva.</p>
-                <button class="next-btn" onclick="startCelebration()">Mulai Kejutan! 🎉</button>
-            </div>
+            <h1 class="title animate__animated animate__fadeInDown">
+                Happy Birthday!
+            </h1>
         </div>
 
-        <div id="celebration" class="celebration-content">
-            <div class="cake" style="font-size: 10rem;">🎂</div> <!-- Emoji lebih besar lagi -->
-            <div class="message animate__animated animate__fadeIn">
-                <h1 style="color: var(--text-color)">Happy 14th Birthday My Love 💝</h1>
-                <p style="margin-top: 1rem">To the most beautiful girl in my world...</p>
-            </div>
-
-            <div class="message animate__animated animate__fadeIn">
-                <h2 style="color: var(--text-color)">My Dearest Syiva... 💖</h2>
-                <p style="margin-top: 1rem">Setiap hari bersamamu adalah anugerah. Senyummu adalah matahariku, tawamu adalah kebahagiaanku, dan cintamu adalah kekuatanku.</p>
-                <p class="love-quote">"I love you more than yesterday, but less than tomorrow."</p>
-            </div>
-
-            <div class="message animate__animated animate__fadeIn">
-                <h2 style="color: var(--text-color)">Wishes for You 💝</h2>
-                <p style="margin-top: 1rem">Di ulang tahunmu yang ke-14 ini, aku berharap kamu selalu bahagia, sehat, dan sukses dalam semua impianmu. I'll always be here for you, supporting you in every step you take.</p>
-                <div class="love-message">
-                    I love you more than words can say, Syiva!<br>
-                    You mean everything to me ❤️
+        <div class="card animate__animated animate__fadeIn">
+            <div class="message">
+                <p>Selamat Ulang Tahun yang ke-? 🌟</p>
+                <p>Di hari yang istimewa ini, aku ingin mengucapkan sesuatu yang spesial untukmu...</p>
+                
+                <div class="quote">
+                    "Setiap langkahmu adalah inspirasi, setiap senyummu adalah kebahagiaan, dan setiap kehadiranmu adalah anugerah yang tak ternilai."
                 </div>
-            </div>
 
-            <div class="message animate__animated animate__fadeIn">
-                <p class="love-quote">"You're not just my girlfriend, you're my everything."</p>
-                <p style="margin-top: 1rem">Thank you for being the most amazing girlfriend. You make my life complete.</p>
-            </div>
+                <div class="wishes">
+                    <div class="wish-card">
+                        <i class="fas fa-star"></i>
+                        <h3>Kesuksesan</h3>
+                        <p>Semoga segala impian dan cita-citamu dapat terwujud</p>
+                    </div>
+                    <div class="wish-card">
+                        <i class="fas fa-heart"></i>
+                        <h3>Kebahagiaan</h3>
+                        <p>Semoga selalu diberikan kebahagiaan dalam setiap langkahmu</p>
+                    </div>
+                    <div class="wish-card">
+                        <i class="fas fa-pray"></i>
+                        <h3>Keberkahan</h3>
+                        <p>Semoga selalu dilimpahi keberkahan dan kesehatan</p>
+                    </div>
+                </div>
 
-            <a href="https://wa.me/6285640429082?text=Terima%20kasih%20untuk%20kejutannya%20❤️" class="whatsapp-btn">
-                Balas Pesan ✨
+                <p>Terima kasih telah menjadi pribadi yang luar biasa. Semoga di tahun barumu ini membawa lebih banyak kebahagiaan, kesuksesan, dan keajaiban dalam hidupmu! ✨</p>
+            </div>
+            
+            <button class="button" id="playMusic">
+                <i class="fas fa-music"></i> Play Birthday Song
+            </button>
+            
+            <a href="https://wa.me/6285640429082?text=Terima%20kasih%20atas%20ucapannya%20😊" 
+               class="button" target="_blank">
+                <i class="fab fa-whatsapp"></i> Balas Ucapan
             </a>
         </div>
     </div>
 
+    <div id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <script>
-        function startStory() {
-            document.querySelector('.start-btn').classList.add('hidden');
-            document.getElementById('story').classList.remove('hidden');
-            showNextPage(1);
+        // Landing page
+        function startSurprise() {
+            document.getElementById('landing-page').classList.add('hide');
         }
 
-        function showNextPage(pageNumber) {
-            const currentPage = document.getElementById(`page${pageNumber}`);
-            currentPage.classList.add('show');
-        }
-
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.innerHTML = '❤️';
-            heart.style.left = Math.random() * 100 + 'vw';
-            heart.style.animationDuration = Math.random() * 3 + 2 + 's';
-            document.body.appendChild(heart);
+        // Floating icons animation
+        const icons = ['fa-star', 'fa-heart', 'fa-gift', 'fa-sparkles'];
+        
+        function createFloatingIcon() {
+            const icon = document.createElement('div');
+            icon.className = 'floating-icon';
+            const randomIcon = icons[Math.floor(Math.random() * icons.length)];
+            icon.innerHTML = `<i class="fas ${randomIcon}"></i>`;
+            icon.style.left = Math.random() * 100 + 'vw';
+            document.querySelector('.floating-icons').appendChild(icon);
 
             setTimeout(() => {
-                heart.remove();
-            }, 5000);
+                icon.remove();
+            }, 4000);
+        }
+
+        setInterval(createFloatingIcon, 300);
+
+        // Music player
+        const notes = [
+            392.00, // G4
+            392.00, // G4
+            440.00, // A4
+            392.00, // G4
+            523.25, // C5
+            493.88, // B4
+            392.00, // G4
+            392.00, // G4
+            440.00, // A4
+            392.00, // G4
+            587.33, // D5
+            523.25, // C5
+        ];
+
+        let audioContext;
+        let isPlaying = false;
+
+        document.getElementById('playMusic').addEventListener('click', () => {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+
+            if (!isPlaying) {
+                isPlaying = true;
+                playBirthdaySong();
+            }
+        });
+
+        function playNote(frequency, startTime, duration) {
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = 'sine';
+            oscillator.frequency.value = frequency;
+            
+            gainNode.gain.setValueAtTime(0.5, startTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, startTime + duration - 0.05);
+            
+            oscillator.start(startTime);
+            oscillator.stop(startTime + duration);
         }
 
         function playBirthdaySong() {
-            const audio = new Audio('https://example.com/birthday-song.mp3');
-            audio.play();
+            const now = audioContext.currentTime;
+            let timeOffset = 0;
+            const noteDuration = 0.5;
+
+            notes.forEach((note, index) => {
+                playNote(note, now + timeOffset, noteDuration);
+                timeOffset += noteDuration;
+            });
+
+            setTimeout(() => {
+                isPlaying = false;
+            }, timeOffset * 1000);
         }
 
-        function startCelebration() {
-            document.getElementById('story').classList.add('hidden');
-            document.getElementById('celebration').style.display = 'block';
-            
-            // Start creating hearts
-            setInterval(createHeart, 300);
+        // Scroll to top button
+        const scrollTopBtn = document.getElementById('scrollTop');
 
-            // Play birthday song
-            playBirthdaySong();
+        window.onscroll = () => {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        };
 
-            // Animate messages sequentially
-            const messages = document.querySelectorAll('.message');
-            messages.forEach((message, index) => {
-                setTimeout(() => {
-                    message.classList.add('show');
-                }, index * 1000);
-            });
-        }
-
-        // Preload images
-        window.addEventListener('load', () => {
-            const images = document.querySelectorAll('img');
-            images.forEach(img => {
-                const src = img.getAttribute('src');
-                if (src) {
-                    const preloadImg = new Image();
-                    preloadImg.src = src;
-                }
-            });
+        scrollTopBtn.addEventListener('click', () => {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
         });
     </script>
 </body>
