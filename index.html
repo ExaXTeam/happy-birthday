@@ -67,21 +67,27 @@
             padding: 20px;
             text-align: center;
         }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
+        
         .logo {
             width: 120px;
             height: 120px;
-            margin: 130px auto 20px; /* Mengubah margin-top menjadi 60px */
+            margin: 100px auto 20px; /* Mengubah margin-top menjadi 100px */
             animation: bounce 2s infinite;
+            position: relative; /* Menambahkan position relative */
+            z-index: 1; /* Memastikan logo tetap di atas background */
         }
 
         .logo i {
             font-size: 4em;
             color: var(--accent-color);
+        }
+
+        .header {
+            margin-bottom: 40px;
+            min-height: 300px; /* Menambahkan minimum height untuk header */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Membantu penataan vertikal */
         }
 
         .title {
